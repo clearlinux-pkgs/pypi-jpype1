@@ -4,15 +4,15 @@
 #
 Name     : pypi-jpype1
 Version  : 1.3.0
-Release  : 2
+Release  : 3
 URL      : https://files.pythonhosted.org/packages/57/4f/3cddc9b9cd892bbe098e5d48ed3a8aaa02dd3fa732612065fa6b0fab0062/JPype1-1.3.0.tar.gz
 Source0  : https://files.pythonhosted.org/packages/57/4f/3cddc9b9cd892bbe098e5d48ed3a8aaa02dd3fa732612065fa6b0fab0062/JPype1-1.3.0.tar.gz
 Summary  : A Python to Java bridge.
 Group    : Development/Tools
 License  : Apache-2.0
+Requires: pypi-jpype1-license = %{version}-%{release}
 Requires: pypi-jpype1-python = %{version}-%{release}
 Requires: pypi-jpype1-python3 = %{version}-%{release}
-BuildRequires : apache-ant
 BuildRequires : buildreq-distutils3
 BuildRequires : pypi(typing_extensions)
 
@@ -25,6 +25,14 @@ JPype
 =====
 
 |implementation|  |pyversions|  |javaversions|  |jvm|  |platform|  |license|
+
+%package license
+Summary: license components for the pypi-jpype1 package.
+Group: Default
+
+%description license
+license components for the pypi-jpype1 package.
+
 
 %package python
 Summary: python components for the pypi-jpype1 package.
@@ -55,7 +63,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1639050126
+export SOURCE_DATE_EPOCH=1640037276
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -70,6 +78,8 @@ python3 setup.py build
 %install
 export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
+mkdir -p %{buildroot}/usr/share/package-licenses/pypi-jpype1
+cp %{_builddir}/JPype1-1.3.0/NOTICE %{buildroot}/usr/share/package-licenses/pypi-jpype1/523827acd23caa6282e6aa25436ba1f1cf49fa92
 python3 -tt setup.py build  install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
@@ -77,6 +87,10 @@ echo ----[ mark ]----
 
 %files
 %defattr(-,root,root,-)
+
+%files license
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/pypi-jpype1/523827acd23caa6282e6aa25436ba1f1cf49fa92
 
 %files python
 %defattr(-,root,root,-)
