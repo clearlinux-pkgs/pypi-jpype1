@@ -5,7 +5,7 @@
 #
 Name     : pypi-jpype1
 Version  : 1.4.1
-Release  : 18
+Release  : 19
 URL      : https://files.pythonhosted.org/packages/1b/eb/3e9696c3feda2d70a866a3f62880b9eb77187d7b188436d3f480c2f4842c/JPype1-1.4.1.tar.gz
 Source0  : https://files.pythonhosted.org/packages/1b/eb/3e9696c3feda2d70a866a3f62880b9eb77187d7b188436d3f480c2f4842c/JPype1-1.4.1.tar.gz
 Summary  : A Python to Java bridge.
@@ -70,7 +70,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1683039500
+export SOURCE_DATE_EPOCH=1685557310
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
